@@ -45,8 +45,8 @@ x=Sc.nextInt();
 if (x==1){
 	Statement stmt = con.createStatement();
 	        
-rs = stmt.executeQuery("SELECT film FROM Film WHERE Year = 2010");		// запуска€ программу дважды получаю ошибку - No database selected
-																								// надо добавить подключение к базе до SELECT
+rs = stmt.executeQuery("SELECT film FROM Film WHERE Year = 2010");		// When I try to run your application twice I get the error: No database selected
+																								// You should implement connection to already created database
 while ( rs.next() ) {
             System.out.println(rs.getString("film"));
 }
@@ -55,7 +55,7 @@ while ( rs.next() ) {
 	Scanner Sc1=new Scanner(System.in);
 	int y=Sc1.nextInt();
 	Statement stmt1 = con.createStatement();
-	rs = stmt1.executeQuery("Select FROM Film WHERE Director =",y);      // error! - код не работает вообще, ай-€й€й
+	rs = stmt1.executeQuery("Select FROM Film WHERE Director =",y);      // error! - code doesn't compile at all :(
 }*/
 
 
