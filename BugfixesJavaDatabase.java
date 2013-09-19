@@ -30,6 +30,7 @@ public class JDBCtask{
   System.out.println("Table creation process successfully!");
   }
   catch(SQLException s){
+  st.executeUpdate(table);	
   System.out.println("Table allready exists!");
   }
  preparedstatement = con
@@ -51,15 +52,14 @@ while ( rs.next() ) {
             System.out.println(rs.getString("film"));
 }
 }
-/*if(x==2){
+if(x==2){
 	Scanner Sc1=new Scanner(System.in);
 	int y=Sc1.nextInt();
 	Statement stmt1 = con.createStatement();
 	rs = stmt1.executeQuery("SELECT Director FROM Film WHERE Director =",y);      // error! - code doesn't compile at all :(    А теперь должен заработать
-}*/
+}
 
-Statement st = con.createStatement();
-  st.executeUpdate("DROP TABLE Film");     // удаление таблицы
+     // удаление таблицы
 
   con.close();
   }
@@ -69,4 +69,4 @@ Statement st = con.createStatement();
   }
   
   }
-}//Попробовал вместо push на сервер, create file прямо в github.com по вопросам обращайся 2898658 
+}
