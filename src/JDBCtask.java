@@ -1,3 +1,4 @@
+
 import java.sql.*;
 import java.util.Scanner;
  
@@ -16,20 +17,23 @@ public class JDBCtask{
   Class.forName(driverName).newInstance();
   con = DriverManager.getConnection(url, userName, password);
  //con = DriverManager.getConnection(url+dbName, userName, password);
- try{
   Statement st = con.createStatement();
+  String table =
+		  "CREATE TABLE Film(year integer,film String,Director String,Country String)";
+ try{
+  
 
   String database =
 		  "CREATE DATABASE "+dbName;
 		  st.executeUpdate(database);
 		  System.out.println("Table creation process successfully!");
 
-  String table =
- "CREATE TABLE Film(year integer,film String,Director String,Country String)";
+  
   st.executeUpdate(table);
   System.out.println("Table creation process successfully!");
   }
   catch(SQLException s){
+  st.executeUpdate(table);	
   System.out.println("Table allready exists!");
   }
  preparedstatement = con
@@ -44,20 +48,21 @@ Scanner Sc=new Scanner(System.in);
 x=Sc.nextInt();
 if (x==1){
 	Statement stmt = con.createStatement();
-	        
-rs = stmt.executeQuery("SELECT film FROM Film WHERE Year = 2010");		// When I try to run your application twice I get the error: No database selected
-																								// You should implement connection to already created database
+
+rs = stmt.executeQuery("SELECT film FROM Film WHERE Year = 2010");		
+																								
 while ( rs.next() ) {
             System.out.println(rs.getString("film"));
 }
 }
-/*if(x==2){
+if(x==2){
 	Scanner Sc1=new Scanner(System.in);
 	int y=Sc1.nextInt();
 	Statement stmt1 = con.createStatement();
-	rs = stmt1.executeQuery("Select FROM Film WHERE Director =",y);      // error! - code doesn't compile at all :(
-}*/
+	rs = stmt1.executeQuery("SELECT Director FROM Film WHERE Director ="+y);      
+}
 
+     
 
   con.close();
   }
